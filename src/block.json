@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b-blocks/profile-card",
+  "version": "1.0.0",
+  "title": "Profile Card",
+  "category": "widgets",
+  "description": "Short description of the Profile-Card ",
+  "keywords": ["Profile","Card"],
+  "textdomain": "b-blocks",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+"profiles": {
+      "type": "array",
+      "default": [
+        {
+          "name": "Sarah Anderson",
+          "img": "https://cdn.pixabay.com/photo/2023/04/05/09/44/landscape-7901065_1280.jpg",
+          "bio": "Creative designer with 5+ years of experience in digital product design and brand identity.",
+          "title": "Senior Product Designer",
+          "stats": [
+            { "label": "Projects", "value": "1.2k" },
+            { "label": "Followers", "value": "8.5k" },
+            { "label": "Following", "value": "4.7k" }
+          ],
+          "skills": ["UI/UX", "Branding", "Motion"],
+          "buttons": [
+            {"type":"primary", "label": "Follow" },
+            {"type":"secondary", "label": "Message" }
+          ]
+        }
+      ]
+    },
+
+    "nameStyle":{
+      "type":"object",
+      "default":{
+        "NameColor":"#a78bfa",
+        "NameTag": "h2"
+      }
+    },
+
+    "titleStyle":{
+      "type":"object",
+      "default":{
+        "titleColor": "#94a3b8",
+        "titleSize": "16px"
+      }
+    },
+
+    "bioStyle":{
+      "type":"object",
+      "default":{
+        "bioColor": "#64f051",
+        "bioTag": "p"
+      }
+    },
+ 
+    "statsStyle": {
+      "type": "object",
+      "default": {
+        "labelColor": "#94a3b8", 
+        "labelSize": "13px",  
+        "valueColor": "#60a5fa", 
+        "valueSize": "20px" 
+      }
+    },
+  
+    "buttonOneStyle": {
+      "type": "string",
+      "default": "primary"
+    },
+    "buttonTwoStyle": {
+      "type": "string",
+      "default": "secondary"
+    }
+  },
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
