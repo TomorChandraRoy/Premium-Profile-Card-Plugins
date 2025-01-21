@@ -97,14 +97,14 @@ const General = ({ attributes, setAttributes }) => {
 
   // button start
 
-  // const handleAddButton = (profileIndex) => {
-  //   const updatedProfiles = [...profiles];
-  //   updatedProfiles[profileIndex] = {
-  //     ...updatedProfiles[profileIndex],
-  //     buttons: [...updatedProfiles[profileIndex].buttons, { label: "New Button" }]
-  //   };
-  //   setAttributes({ profiles: updatedProfiles });
-  // };
+  const handleAddButton = (profileIndex) => {
+    const updatedProfiles = [...profiles];
+    updatedProfiles[profileIndex] = {
+      ...updatedProfiles[profileIndex],
+      buttons: [...updatedProfiles[profileIndex].buttons, { label: "New Skill" }]
+    };
+    setAttributes({ profiles: updatedProfiles });
+  };
 
   const handleButtonChange = (profileIndex, buttonIndex, value) => {
     const updatedProfiles = [...profiles];
@@ -351,13 +351,13 @@ const General = ({ attributes, setAttributes }) => {
               </div>
             ))}
             {/* button add */}
-            {/* <Button
+            <Button
                 isPrimary
                onClick={() => handleAddButton(index)}
               style={{ marginTop: "10px" }}
                >
             {__("Add Button", "b-blocks")}
-            </Button> */}
+            </Button>
       </PanelBody>
           </div>
         ))}

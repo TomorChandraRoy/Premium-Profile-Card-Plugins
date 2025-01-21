@@ -78,11 +78,11 @@ const ProfileCard = ({
   }, profile.skills.map((skill, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "skill",
     key: i
-  }, skill))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, skill))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, buttonToggle ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "actions"
-  }, buttonToggle ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, profile.buttons.map((button, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, profile.buttons.map((button, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     key: i,
-    className: ` buttonSty action-btn ${button.type}`
+    className: `action-btn ${button.type}`
   }, button.label, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-effect"
   })))) : ""))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

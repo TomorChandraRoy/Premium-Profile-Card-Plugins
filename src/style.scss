@@ -179,14 +179,19 @@ body {
     //     transform: translateY(-2px);
     // }
     }
+    
    /* Action Buttons */
    .actions {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap; 
+    gap: 1rem; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px;
+
     .action-btn {
-        flex: 1;
         position: relative;
-        padding: 0.8rem;
+        padding:16px 40px ;
         border: none;
         border-radius: 0.8rem;
         font-size: 1rem;

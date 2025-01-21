@@ -58,16 +58,17 @@ const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
                     ))}
                   </div>
 
-                  <div className="actions">
+                  <div >
                     {buttonToggle ? 
-                    <>
+                    <div className="actions">
                       {profile.buttons.map((button, i) => (
-                      <button key={i} className={` buttonSty action-btn ${button.type}`}>
+                      <button key={i} className={`action-btn ${button.type}`}>
                         {button.label}
                         <div className="btn-effect"></div>
                       </button>
+                      
                     ))}
-                    </>
+                    </div>
                     
                     :""}
 
