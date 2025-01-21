@@ -7,19 +7,28 @@ import {
   __experimentalBoxControl as BoxControl,
   __experimentalUnitControl as UnitControl,
   GradientPicker,
+  ToggleControl,
 } from "@wordpress/components";
 import {} from "../../../../../../bpl-tools/Components";
 
 const Style = ({ attributes, setAttributes }) => {
-  const { nameStyle, titleStyle,bioStyle, statsStyle, width, height, profileRadius,gradientBackground,skillsStyle  } =
-    attributes;
-  // console.log(gradientBackground);
+  const {
+    nameStyle,
+    titleStyle,
+    bioStyle,
+    statsStyle,
+    width,
+    height,
+    profileRadius,
+    gradientBackground,
+    skillsStyle,buttonToggle
+  } = attributes;
+  // console.log(buttonToggle);
 
   const { NameColor, NameTag } = nameStyle;
   const { titleColor, titleSize } = titleStyle;
   const { bioSize, bioColor } = bioStyle;
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
- 
 
   return (
     <>
@@ -142,7 +151,9 @@ const Style = ({ attributes, setAttributes }) => {
         />
 
         {/* Value Color */}
-        <div style={{marginTop:"20px"}}>{__("Value Color:", "b-blocks")}</div>
+        <div style={{ marginTop: "20px" }}>
+          {__("Value Color:", "b-blocks")}
+        </div>
         <ColorPalette
           value={valueColor}
           onChange={(color) => {
@@ -165,26 +176,22 @@ const Style = ({ attributes, setAttributes }) => {
         />
       </PanelBody>
 
-
       <PanelBody title={__("Skills Style", "b-blocks")} initialOpen={false}>
-
         <h3>{__("Skill Color:", "b-blocks")}</h3>
         <ColorPalette
           value={skillsStyle.skillsColor}
           onChange={(color) => {
-            setAttributes({ skillsStyle: { ...skillsStyle, skillsColor: color } });
-          }
-           
-          }
+            setAttributes({
+              skillsStyle: { ...skillsStyle, skillsColor: color },
+            });
+          }}
         />
         <h3>{__("BG Color:", "b-blocks")}</h3>
         <ColorPalette
           value={skillsStyle.skillsBg}
           onChange={(color) => {
             setAttributes({ skillsStyle: { ...skillsStyle, skillsBg: color } });
-          }
-           
-          }
+          }}
         />
       </PanelBody>
 
@@ -209,17 +216,21 @@ const Style = ({ attributes, setAttributes }) => {
           onChange={(Value) => setAttributes({ profileRadius: Value })}
         />
 
-     <h3>Background Color</h3>
-      <GradientPicker
-        onChange={(color) => setAttributes({gradientBackground: color})}
-        value={gradientBackground }
-      />
-
+        <h3>Background Color</h3>
+        <GradientPicker
+          onChange={(color) => setAttributes({ gradientBackground: color })}
+          value={gradientBackground}
+        />
       </PanelBody>
 
-      {/* <PanelBody title={__("Border Radius", "b-blocks")} initialOpen={false}>
-
-      </PanelBody> */}
+      <PanelBody title={__("Button Style", "b-blocks")} initialOpen={false}>
+        <ToggleControl
+          label="Button ON/OFF"
+          help={ buttonToggle ? 'Button ON.' : 'Button OFF' }
+          checked={buttonToggle}
+          onChange={(e) => setAttributes({buttonToggle:e})}
+        />
+      </PanelBody>
     </>
   );
 };

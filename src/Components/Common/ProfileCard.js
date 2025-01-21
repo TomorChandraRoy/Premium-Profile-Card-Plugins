@@ -2,7 +2,7 @@ import { RichText } from "@wordpress/block-editor";
 
 const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
 
-  const {nameStyle,profiles} = attributes;
+  const {nameStyle,profiles,buttonToggle} = attributes;
 
   const TagName = nameStyle.NameTag || "span";
 
@@ -59,12 +59,18 @@ const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
                   </div>
 
                   <div className="actions">
-                    {profile.buttons.map((button, i) => (
+                    {buttonToggle ? 
+                    <>
+                      {profile.buttons.map((button, i) => (
                       <button key={i} className={`action-btn ${button.type}`}>
                         {button.label}
                         <div className="btn-effect"></div>
                       </button>
                     ))}
+                    </>
+                    
+                    :""}
+
                   </div>
                 </div>
               </div>

@@ -105,6 +105,10 @@
     "buttonTwoStyle": {
       "type": "string",
       "default": "secondary"
+    },
+    "buttonToggle": {
+      "type": "boolean",
+      "default": "true"
     }
   },
   "supports": {
