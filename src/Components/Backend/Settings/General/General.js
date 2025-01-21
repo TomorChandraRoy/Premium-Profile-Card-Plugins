@@ -9,21 +9,20 @@ import {
 } from "@wordpress/components";
 
 const General = ({ attributes, setAttributes }) => {
-  const {profiles} = attributes;
-
+  const { profiles } = attributes;
 
   const handleAddProfile = () => {
     const newProfile = {
       name: "New User",
       img: "https://i.ibb.co.com/JjgYLtD/forest-6874717-1920.jpg",
-      bio: "Enter bio here...",
-      title: "Enter title...",
+      bio: "Creative designer with 5+ years of experience in digital product design and brand identity.",
+      title: "Product Designer",
       stats: [
-        { label: "Projects", value: "0" },
-        { label: "Followers", value: "0" },
-        { label: "Following", value: "0" },
+        { label: "Projects", value: "1.3k" },
+        { label: "Followers", value: "30.0k" },
+        { label: "Following", value: "5.0k" },
       ],
-      skills: ["New Skill"],
+      skills: ["UI/UX", "Branding", "Motion"],
       buttons: [
         { type: "primary", label: "Follow" },
         { type: "secondary", label: "Message" },
@@ -64,14 +63,14 @@ const General = ({ attributes, setAttributes }) => {
   // Stats End
 
   // skills start
-  // const handleAddSkill = (profileIndex) => {
-  //   const updatedProfiles = [...profiles];
-  //   updatedProfiles[profileIndex] = {
-  //     ...updatedProfiles[profileIndex],
-  //     skills: [...updatedProfiles[profileIndex].skills, "New Skill"]
-  //   };
-  //   setAttributes({ profiles: updatedProfiles });
-  // };
+  const handleAddSkill = (profileIndex) => {
+    const updatedProfiles = [...profiles];
+    updatedProfiles[profileIndex] = {
+      ...updatedProfiles[profileIndex],
+      skills: [...updatedProfiles[profileIndex].skills, "New Skill"]
+    };
+    setAttributes({ profiles: updatedProfiles });
+  };
 
   const handleSkillChange = (profileIndex, skillIndex, value) => {
     const updatedProfiles = [...profiles];
@@ -136,67 +135,92 @@ const General = ({ attributes, setAttributes }) => {
         initialOpen={false}
       >
         {profiles.map((profile, index) => (
-          <div key={index} className="profile-card">
-            <div className="imageSection" style={{ marginTop: "20px", marginBottom: "20px" }}>
-              {/* Image URL Input */}
-              <TextControl
-                label={__("Image URL:", "b-blocks")}
-                placeholder={__("Enter Image URL...", "b-blocks")}
-                value={profile.img || ""}
-                onChange={(value) => handleProfileChange(index, "img", value)}
-              />
+          <div key={index}>
+            <PanelBody
+              className="bPlPanelBody"
+              title={`${__("Profile", "b-blocks")} - ${profile?.name || __("Name not set", "b-blocks")} (${index + 1})`}
+              initialOpen={false}
+            >
+              <div key={index} className="profile-card">
+                <div
+                  className="imageSection"
+                  style={{ marginTop: "20px", marginBottom: "20px" }}
+                >
+                  {/* Image URL Input */}
+                  <TextControl
+                    label={__("Image URL:", "b-blocks")}
+                    placeholder={__("Enter Image URL...", "b-blocks")}
+                    value={profile.img || ""}
+                    onChange={(value) =>
+                      handleProfileChange(index, "img", value)
+                    }
+                  />
 
-              {/* Media Upload */}
-              <MediaUpload
-                onSelect={(media) => {
-                  handleProfileChange(index, "img", media.url);
-                }}
-                allowedTypes={["image"]}
-                render={({ open }) => (
+                  {/* Media Upload */}
+                  <MediaUpload
+                    onSelect={(media) => {
+                      handleProfileChange(index, "img", media.url);
+                    }}
+                    allowedTypes={["image"]}
+                    render={({ open }) => (
+                      <Button
+                        onClick={open}
+                        isPrimary
+                        className="editor-media-placeholder_button is-button is-default is-large"
+                      >
+                        {__("Upload Image", "b-blocks")}
+                      </Button>
+                    )}
+                  />
+                </div>
+
+                <TextControl
+                  label={__("Name", "b-blocks")}
+                  placeholder="Your Name"
+                  value={profile?.name}
+                  onChange={(value) =>
+                    handleProfileChange(index, "name", value)
+                  }
+                />
+                <InputControl
+                  style={{ marginTop: "20px", marginBottom: "20px" }}
+                  label="Title"
+                  value={profile?.title}
+                  onChange={(newTitle) =>
+                    handleProfileChange(index, "title", newTitle)
+                  }
+                  placeholder="Your Postion Name"
+                />
+                <TextareaControl
+                  label={__("Description : ", "b-blocks")}
+                  placeholder={__("Your Description Add...", "b-blocks")}
+                  value={profile?.bio || ""}
+                  onChange={(dec) => handleProfileChange(index, "bio", dec)}
+                />
+
+                {/* button */}
+                <div
+                  className=""
+                  style={{ marginBottom: "20px", display: "flex" }}
+                >
                   <Button
-                    onClick={open}
-                    isPrimary
-                    className="editor-media-placeholder_button is-button is-default is-large"
+                    isDestructive
+                    isSecondary
+                    onClick={() => handleRemoveProfile(index)}
                   >
-                    {__("Upload Image", "b-blocks")}
+                    {__("Remove Profile", "b-blocks")}
                   </Button>
-                )}
-              />
-            </div>
 
-            <TextControl 
-              label={__("Name", "b-blocks")}
-              placeholder="Your Name"
-              value={profile?.name}
-              onChange={(value) => handleProfileChange(index, "name", value)}
-            />
-            <InputControl
-              style={{ marginTop: "20px", marginBottom: "20px" }}
-              label="Title"
-              value={profile?.title}
-              onChange={(newTitle) =>
-                handleProfileChange(index, "title", newTitle)
-              }
-              placeholder="Your Postion Name"
-            />
-            <TextareaControl
-              label={__("Description : ", "b-blocks")}
-              placeholder={__("Your Description Add...", "b-blocks")}
-              value={profile?.bio || ""}
-              onChange={(dec) => handleProfileChange(index, "bio", dec)}
-            />
-
-          
-            {/* button */}
-            <div className="" style={{ marginBottom: "20px", display:"flex" }}>
-            <Button isDestructive isSecondary onClick={() => handleRemoveProfile(index)}>
-              {__("Remove Profile", "b-blocks")}
-            </Button>
-
-            <Button isSecondary onClick={() => handleDuplicateProfile(index)} style={{ marginLeft: "5px",}}>
-              {__("Duplicate Profile", "b-blocks")}
-            </Button>
-            </div>
+                  <Button
+                    isSecondary
+                    onClick={() => handleDuplicateProfile(index)}
+                    style={{ marginLeft: "5px" }}
+                  >
+                    {__("Duplicate", "b-blocks")}
+                  </Button>
+                </div>
+              </div>
+            </PanelBody>
           </div>
         ))}
         <Button isPrimary onClick={handleAddProfile}>
@@ -210,6 +234,12 @@ const General = ({ attributes, setAttributes }) => {
         initialOpen={false}
       >
         {profiles.map((profile, index) => (
+          <div key={index}>
+      <PanelBody
+        className="bPlPanelBody"
+        title={`${__("Starts", "b-blocks")} -  (${index + 1})`}
+        initialOpen={false}
+      >
           <div style={{ marginTop: "20px" }} key={index}>
             {profile.stats.map((stat, statIndex) => (
               <div key={statIndex} className="stat-editor">
@@ -230,6 +260,10 @@ const General = ({ attributes, setAttributes }) => {
               </div>
             ))}
           </div>
+      </PanelBody>
+
+      </div>
+
         ))}
       </PanelBody>
 
@@ -239,7 +273,12 @@ const General = ({ attributes, setAttributes }) => {
         initialOpen={false}
       >
         {profiles.map((profile, index) => (
-          <div key={index}>
+      <div key={index}>
+      <PanelBody
+        className="bPlPanelBody"
+        title={`${__("Skills", "b-blocks")} -  (${index + 1})`}
+        initialOpen={false}
+      >
             {profile.skills.map((skill, skillIndex) => (
               <div key={skillIndex} style={{ marginBottom: "10px" }}>
                 <TextControl
@@ -250,7 +289,8 @@ const General = ({ attributes, setAttributes }) => {
                   }
                 />
                 <Button
-                  isDestructive isSecondary
+                  isDestructive
+                  isSecondary
                   onClick={() => handleRemoveSkill(index, skillIndex)}
                   style={{ marginTop: "5px" }}
                 >
@@ -258,14 +298,16 @@ const General = ({ attributes, setAttributes }) => {
                 </Button>
               </div>
             ))}
-            {/* <Button
+            <Button
               isPrimary
               onClick={() => handleAddSkill(index)}
               style={{ marginTop: "10px" }}
             >
               {__("Add Skill", "b-blocks")}
-            </Button> */}
-          </div>
+            </Button>
+      </PanelBody>
+
+      </div>
         ))}
       </PanelBody>
 
@@ -280,6 +322,11 @@ const General = ({ attributes, setAttributes }) => {
             className="uttonsSection"
             key={index}
           >
+        <PanelBody
+        className="bPlPanelBody"
+        title={`${__("Buttons", "b-blocks")} -  (${index + 1})`}
+        initialOpen={false}
+      >
             {profile.buttons.map((button, buttonIndex) => (
               <div
                 key={buttonIndex}
@@ -294,7 +341,8 @@ const General = ({ attributes, setAttributes }) => {
                   }
                 />
                 <Button
-                  isDestructive isSecondary
+                  isDestructive
+                  isSecondary
                   onClick={() => handleRemoveButton(index, buttonIndex)}
                   style={{ marginTop: "5px" }}
                 >
@@ -310,6 +358,7 @@ const General = ({ attributes, setAttributes }) => {
                >
             {__("Add Button", "b-blocks")}
             </Button> */}
+      </PanelBody>
           </div>
         ))}
       </PanelBody>

@@ -29,7 +29,9 @@ const ProfileCard = ({
     buttonToggle
   } = attributes;
   const TagName = nameStyle.NameTag || "span";
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, profiles.map((profile, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("body", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "profile-grid"
+  }, profiles.map((profile, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("body", {
     key: index
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
@@ -80,7 +82,7 @@ const ProfileCard = ({
     className: "actions"
   }, buttonToggle ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, profile.buttons.map((button, i) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     key: i,
-    className: `action-btn ${button.type}`
+    className: ` buttonSty action-btn ${button.type}`
   }, button.label, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-effect"
   })))) : ""))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -121,7 +123,8 @@ const Style = ({
     profileRadius,
     gradientBackground,
     bioStyle,
-    skillsStyle
+    skillsStyle,
+    buttonStyle
   } = attributes;
   const {
     NameColor
@@ -150,6 +153,10 @@ const Style = ({
     bottom,
     left
   } = profileRadius;
+  const {
+    buttonBg,
+    buttonColor
+  } = buttonStyle;
   const mainSl = `#${id}`;
   const profileInfo = `${mainSl} .profile-info`;
   const name = `${profileInfo} .name`;
@@ -163,6 +170,8 @@ const Style = ({
   const statlabel = `${Stats} .stat-label`;
   const container = `${mainSl} .container`;
   const profileCard = `${container} .profile-card`;
+  const actions = `${profileInfo} .actions`;
+  const buttonSty = `${actions} .buttonSty`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -202,8 +211,12 @@ const Style = ({
    max-width:${width};
    height:${height};
    border-radius:${top} ${right} ${bottom} ${left};
-   background:${gradientBackground}
+   background:${gradientBackground};
   }
+   ${buttonSty}{
+   background:${buttonBg};
+   color:${buttonColor};
+   }
     `
     }
   });

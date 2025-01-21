@@ -76,7 +76,7 @@
       "type":"object",
       "default":{
         "bioColor": "#94a3b8",
-        "bioSize": "20px"
+        "bioSize": "15px"
       }
     },
  
@@ -98,14 +98,15 @@
       }
     },
   
-    "buttonOneStyle": {
-      "type": "string",
-      "default": "primary"
+    "buttonStyle":{
+      "type":"object",
+      "default":{
+        "buttonBg":"#15232D",
+        "buttonColor":"#94a3b8"
+
+      }
     },
-    "buttonTwoStyle": {
-      "type": "string",
-      "default": "secondary"
-    },
+
     "buttonToggle": {
       "type": "boolean",
       "default": "true"

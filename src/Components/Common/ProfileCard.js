@@ -7,14 +7,14 @@ const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
   const TagName = nameStyle.NameTag || "span";
 
   return (
-    <div>
+    <div className="profile-grid">
 
       {profiles.map((profile, index) => (
  
         <body key={index}>
           <div className="container">
             <div className="profile-card">
-              <div className="card-content">
+              <div className="card-content" >
                 <div className="avatar-wrapper">
                   <div className="avatar">
                   <img className="avatarImg"
@@ -62,7 +62,7 @@ const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
                     {buttonToggle ? 
                     <>
                       {profile.buttons.map((button, i) => (
-                      <button key={i} className={`action-btn ${button.type}`}>
+                      <button key={i} className={` buttonSty action-btn ${button.type}`}>
                         {button.label}
                         <div className="btn-effect"></div>
                       </button>

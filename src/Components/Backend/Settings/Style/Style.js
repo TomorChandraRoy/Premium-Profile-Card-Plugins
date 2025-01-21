@@ -21,7 +21,9 @@ const Style = ({ attributes, setAttributes }) => {
     height,
     profileRadius,
     gradientBackground,
-    skillsStyle,buttonToggle
+    skillsStyle,
+    buttonToggle,
+    buttonStyle
   } = attributes;
   // console.log(buttonToggle);
 
@@ -29,6 +31,7 @@ const Style = ({ attributes, setAttributes }) => {
   const { titleColor, titleSize } = titleStyle;
   const { bioSize, bioColor } = bioStyle;
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
+  const { buttonBg,buttonColor } = buttonStyle;
 
   return (
     <>
@@ -226,9 +229,26 @@ const Style = ({ attributes, setAttributes }) => {
       <PanelBody title={__("Button Style", "b-blocks")} initialOpen={false}>
         <ToggleControl
           label="Button ON/OFF"
-          help={ buttonToggle ? 'Button ON.' : 'Button OFF' }
+          help={buttonToggle ? "Button ON." : "Button OFF"}
           checked={buttonToggle}
-          onChange={(e) => setAttributes({buttonToggle:e})}
+          onChange={(e) => setAttributes({ buttonToggle: e })}
+        />
+
+        <h3>{__("Button Text Color:", "b-blocks")}</h3>
+        <ColorPalette
+          value={buttonColor}
+          onChange={(color) => {
+            setAttributes({
+              buttonStyle: { ...buttonStyle, buttonColor: color },
+            });
+          }}
+        />
+        <h3>{__(" Button BG Color:", "b-blocks")}</h3>
+        <ColorPalette
+          value={buttonBg}
+          onChange={(color) => {
+            setAttributes({ buttonStyle: { ...buttonStyle, buttonBg: color } });
+          }}
         />
       </PanelBody>
     </>

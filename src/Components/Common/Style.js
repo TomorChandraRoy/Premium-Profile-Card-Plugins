@@ -1,5 +1,5 @@
 const Style = ({ attributes, id }) => {
-  const { nameStyle, titleStyle, statsStyle, width, height,profileRadius,gradientBackground,bioStyle,skillsStyle } = attributes;
+  const { nameStyle, titleStyle, statsStyle, width, height,profileRadius,gradientBackground,bioStyle,skillsStyle,buttonStyle } = attributes;
   const { NameColor } = nameStyle;
   const { titleColor, titleSize } = titleStyle;
   const { bioSize, bioColor } = bioStyle;
@@ -7,6 +7,8 @@ const Style = ({ attributes, id }) => {
 
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
   const { top, right, bottom, left } = profileRadius;
+
+  const { buttonBg,buttonColor } = buttonStyle;
 
   const mainSl = `#${id}`;
   const profileInfo = `${mainSl} .profile-info`;
@@ -26,6 +28,10 @@ const Style = ({ attributes, id }) => {
 
   const container = `${mainSl} .container`;
   const profileCard = `${container} .profile-card`;
+
+
+  const actions = `${profileInfo} .actions`;
+  const buttonSty = `${actions} .buttonSty`;
 
   return (
     <style
@@ -67,8 +73,12 @@ const Style = ({ attributes, id }) => {
    max-width:${width};
    height:${height};
    border-radius:${top} ${right} ${bottom} ${left};
-   background:${gradientBackground}
+   background:${gradientBackground};
   }
+   ${buttonSty}{
+   background:${buttonBg};
+   color:${buttonColor};
+   }
     `,
       }}
     />
