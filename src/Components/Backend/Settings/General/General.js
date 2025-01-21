@@ -11,7 +11,6 @@ import {
 const General = ({ attributes, setAttributes }) => {
   const {profiles} = attributes;
 
-  console.log(profiles[0].stats[0]);
 
   const handleAddProfile = () => {
     const newProfile = {

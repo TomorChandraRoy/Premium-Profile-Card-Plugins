@@ -24,7 +24,6 @@ const ProfileCard = ({
   setAttributes
 }) => {
   const {
-    name,
     nameStyle,
     profiles
   } = attributes;
@@ -50,7 +49,7 @@ const ProfileCard = ({
   }, isSelected ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "name",
     tagName: nameStyle.NameTag,
-    value: profile.name,
+    value: profile?.name,
     onChange: NewName => {
       setAttributes({
         name: NewName
@@ -58,7 +57,7 @@ const ProfileCard = ({
     }
   }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(TagName, {
     className: "name"
-  }, name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, profile?.name), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "title"
   }, profile.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stats"
@@ -115,7 +114,11 @@ const Style = ({
   const {
     nameStyle,
     titleStyle,
-    statsStyle
+    statsStyle,
+    width,
+    height,
+    profileRadius,
+    gradientBackground
   } = attributes;
   const {
     NameColor
@@ -130,12 +133,12 @@ const Style = ({
     valueColor,
     valueSize
   } = statsStyle;
-
-  // console.log("dy",labelColor,labelSize,valueColor,valueSize);
-  //   console.log(titleSize);
-
-  // console.log(nameStyle);
-
+  const {
+    top,
+    right,
+    bottom,
+    left
+  } = profileRadius;
   const mainSl = `#${id}`;
   const profileInfo = `${mainSl} .profile-info`;
   const name = `${profileInfo} .name`;
@@ -144,14 +147,16 @@ const Style = ({
   const stat = `${Stats} .stat`;
   const statValue = `${stat} .stat-value`;
   const statlabel = `${Stats} .stat-label`;
+  const container = `${mainSl} .container`;
+  const profileCard = `${container} .profile-card`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
 	${name}{
-            background:${NameColor};
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+  background:${NameColor};
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
 	}
 	${title}{
@@ -166,9 +171,12 @@ const Style = ({
 	color:${valueColor};
 	font-size:${valueSize};
 	}
-
-
-
+  ${profileCard}{
+   max-width:${width};
+   height:${height};
+   border-radius:${top} ${right} ${bottom} ${left};
+   background:${gradientBackground}
+  }
     `
     }
   });

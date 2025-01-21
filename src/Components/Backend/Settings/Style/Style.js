@@ -6,21 +6,18 @@ import {
   SelectControl,
   __experimentalBoxControl as BoxControl,
   __experimentalUnitControl as UnitControl,
-
+  GradientPicker,
 } from "@wordpress/components";
 import {} from "../../../../../../bpl-tools/Components";
 
 const Style = ({ attributes, setAttributes }) => {
-  const { nameStyle,titleStyle,statsStyle} = attributes;
-  const {NameColor,NameTag}= nameStyle;
-  const {titleColor,titleSize}= titleStyle;
-  const {labelColor,labelSize,valueColor,valueSize}= statsStyle;
+  const { nameStyle, titleStyle, statsStyle, width, height, profileRadius,gradientBackground  } =
+    attributes;
+  console.log(gradientBackground);
 
-
-  
-
-  console.log(labelColor,labelSize,valueColor,valueSize);
-  
+  const { NameColor, NameTag } = nameStyle;
+  const { titleColor, titleSize } = titleStyle;
+  const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
 
   return (
     <>
@@ -29,20 +26,18 @@ const Style = ({ attributes, setAttributes }) => {
         title={__("Profile Styles ", "b-blocks")}
         initialOpen={false}
       >
-
-
         <h3>{__("Name Color:", "b-blocks")}</h3>
         <ColorPalette
           value={NameColor || ""}
           onChange={(color) => {
-            setAttributes({ nameStyle:{...nameStyle, NameColor: color} });
+            setAttributes({ nameStyle: { ...nameStyle, NameColor: color } });
           }}
         />
         <SelectControl
           label={__("Name Tag : ")}
           value={NameTag}
           onChange={(tag) => {
-            setAttributes({ nameStyle:{...nameStyle, NameTag: tag }});
+            setAttributes({ nameStyle: { ...nameStyle, NameTag: tag } });
           }}
           options={[
             { value: null, label: "Select a User", disabled: true },
@@ -54,15 +49,15 @@ const Style = ({ attributes, setAttributes }) => {
           ]}
         />
 
-      <h3>{__("Title Color:", "b-blocks")}</h3>
+        <h3>{__("Title Color:", "b-blocks")}</h3>
         <ColorPalette
           value={titleColor}
           onChange={(color) => {
-            setAttributes({ titleStyle:{...titleStyle, titleColor: color }});
+            setAttributes({ titleStyle: { ...titleStyle, titleColor: color } });
           }}
         />
 
-       <h3>{__("Title Size:", "b-blocks")}</h3>
+        <h3>{__("Title Size:", "b-blocks")}</h3>
         <FontSizePicker
           fontSizes={[
             {
@@ -82,14 +77,13 @@ const Style = ({ attributes, setAttributes }) => {
             },
           ]}
           onChange={(size) => {
-            setAttributes({ titleStyle:{...titleStyle, titleSize: size }});
+            setAttributes({ titleStyle: { ...titleStyle, titleSize: size } });
           }}
           value={titleSize}
         />
       </PanelBody>
 
       <PanelBody title={__("Stats Style", "b-blocks")} initialOpen={false}>
-        
         {/* Label Color */}
         <h3>{__("Label Color:", "b-blocks")}</h3>
         <ColorPalette
@@ -98,7 +92,7 @@ const Style = ({ attributes, setAttributes }) => {
             setAttributes({ statsStyle: { ...statsStyle, labelColor: color } });
           }}
         />
-        
+
         {/* Label Size */}
         <h3>{__("Label Size:", "b-blocks")}</h3>
         <FontSizePicker
@@ -112,16 +106,16 @@ const Style = ({ attributes, setAttributes }) => {
           }}
           value={labelSize}
         />
-        
+
         {/* Value Color */}
-        <h3>{__("Value Color:", "b-blocks")}</h3>
+        <div style={{marginTop:"20px"}}>{__("Value Color:", "b-blocks")}</div>
         <ColorPalette
           value={valueColor}
           onChange={(color) => {
             setAttributes({ statsStyle: { ...statsStyle, valueColor: color } });
           }}
         />
-        
+
         {/* Title Size */}
         <h3>{__("Value Size:", "b-blocks")}</h3>
         <FontSizePicker
@@ -137,28 +131,38 @@ const Style = ({ attributes, setAttributes }) => {
         />
       </PanelBody>
 
-
-      <PanelBody title={__("Slider Size", "b-blocks")} initialOpen={false}>
+      <PanelBody
+        title={__("Profile Card Size", "b-blocks")}
+        initialOpen={false}
+      >
         <UnitControl
           label="Height"
-          value={""}
-          onChange={(newHeight) => setAttributes({ sliderHeight: newHeight })}
+          value={height}
+          onChange={(newHeight) => setAttributes({ height: newHeight })}
         />
         <UnitControl
           label="Width"
-          value={""}
-          onChange={(newWidth) => setAttributes({ sliderWidth: newWidth })}
+          value={width}
+          onChange={(newWidth) => setAttributes({ width: newWidth })}
         />
-      </PanelBody>
 
-      <PanelBody title={__("Border Radius", "b-blocks")} initialOpen={false}>
         <BoxControl
           label="Border Radius"
-          values={""}
-          onChange={(Value) => setAttributes({ SliderRedius: Value })}
+          values={profileRadius}
+          onChange={(Value) => setAttributes({ profileRadius: Value })}
         />
+
+     <h3>Background Color</h3>
+      <GradientPicker
+        onChange={(color) => setAttributes({gradientBackground: color})}
+        value={gradientBackground }
+      />
+
       </PanelBody>
 
+      {/* <PanelBody title={__("Border Radius", "b-blocks")} initialOpen={false}>
+
+      </PanelBody> */}
     </>
   );
 };

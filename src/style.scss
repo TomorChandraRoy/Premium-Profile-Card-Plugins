@@ -23,7 +23,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 /* Profile Card */
@@ -32,10 +32,9 @@ body {
     padding: 2.5rem;
     background: rgba(30, 41, 59, 0.8);
     backdrop-filter: blur(10px);
-    border-radius: 1.5rem;
+    // border-radius: 1.5rem;
     overflow: hidden;
     transition: transform 0.3s ease;
-   
 }
 
 .profile-card:hover {

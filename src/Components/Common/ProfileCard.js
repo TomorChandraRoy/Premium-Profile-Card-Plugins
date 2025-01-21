@@ -2,7 +2,7 @@ import { RichText } from "@wordpress/block-editor";
 
 const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
 
-  const {name,nameStyle,profiles} = attributes;
+  const {nameStyle,profiles} = attributes;
 
   const TagName = nameStyle.NameTag || "span";
 
@@ -10,6 +10,7 @@ const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
     <div>
 
       {profiles.map((profile, index) => (
+ 
         <body key={index}>
           <div className="container">
             <div className="profile-card">
@@ -28,14 +29,13 @@ const ProfileCard = ({ isSelected, attributes, setAttributes }) => {
                     <RichText
                       className="name"
                       tagName={nameStyle.NameTag}
-                      value={profile.name}
+                      value={profile?.name}
                       onChange={(NewName) => {
                         setAttributes({ name: NewName });
-                        
                       }}
                     />
                   ) : (
-                    <TagName className="name">{name}</TagName>
+                    <TagName className="name">{profile?.name}</TagName>
                   )}
                   <p className="title">{profile.title}</p>
 

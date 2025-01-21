@@ -35,6 +35,27 @@
       ]
     },
 
+   "width": {
+      "type": "string",
+      "default": ""
+    },
+    "height": {
+      "type": "string",
+      "default": ""
+    },
+    "profileRadius": {
+      "type": "object",
+      "default": {
+        "top": "20px",
+        "right": "20px",
+        "bottom": "20px",
+        "left": "20px"
+      }
+    },
+    "gradientBackground": {
+      "type": "string",
+      "default": "linear-gradient(90deg, #1e293b, #1e303b)"
+    },
     "nameStyle":{
       "type":"object",
       "default":{
