@@ -118,7 +118,9 @@ const Style = ({
     width,
     height,
     profileRadius,
-    gradientBackground
+    gradientBackground,
+    bioStyle,
+    skillsStyle
   } = attributes;
   const {
     NameColor
@@ -127,6 +129,14 @@ const Style = ({
     titleColor,
     titleSize
   } = titleStyle;
+  const {
+    bioSize,
+    bioColor
+  } = bioStyle;
+  const {
+    skillsBg,
+    skillsColor
+  } = skillsStyle;
   const {
     labelColor,
     labelSize,
@@ -143,6 +153,9 @@ const Style = ({
   const profileInfo = `${mainSl} .profile-info`;
   const name = `${profileInfo} .name`;
   const title = `${profileInfo} .title`;
+  const bio = `${profileInfo} .bio`;
+  const skills = `${profileInfo} .skills`;
+  const skill = `${skills} .skill`;
   const Stats = `${mainSl} .stats`;
   const stat = `${Stats} .stat`;
   const statValue = `${stat} .stat-value`;
@@ -163,9 +176,22 @@ const Style = ({
 	color:${titleColor};
 	font-size:${titleSize};
 	}
+	${bio}{
+	color:${bioColor};
+	font-size:${bioSize};
+	}
 	${statlabel}{
 	color:${labelColor};
 	font-size:${labelSize};
+	}
+	${skill}{
+   background:${skillsBg};
+   color:${skillsColor};
+	}
+	${skill}:hover{
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transform: translateY(-2px);
 	}
 	${statValue}{
 	color:${valueColor};

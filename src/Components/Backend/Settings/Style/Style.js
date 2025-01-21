@@ -11,13 +11,15 @@ import {
 import {} from "../../../../../../bpl-tools/Components";
 
 const Style = ({ attributes, setAttributes }) => {
-  const { nameStyle, titleStyle, statsStyle, width, height, profileRadius,gradientBackground  } =
+  const { nameStyle, titleStyle,bioStyle, statsStyle, width, height, profileRadius,gradientBackground,skillsStyle  } =
     attributes;
-  console.log(gradientBackground);
+  // console.log(gradientBackground);
 
   const { NameColor, NameTag } = nameStyle;
   const { titleColor, titleSize } = titleStyle;
+  const { bioSize, bioColor } = bioStyle;
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
+ 
 
   return (
     <>
@@ -81,6 +83,38 @@ const Style = ({ attributes, setAttributes }) => {
           }}
           value={titleSize}
         />
+        <h3>{__("Bio Color:", "b-blocks")}</h3>
+        <ColorPalette
+          value={bioColor}
+          onChange={(color) => {
+            setAttributes({ bioStyle: { ...bioStyle, bioColor: color } });
+          }}
+        />
+
+        <h3>{__("Bio Size:", "b-blocks")}</h3>
+        <FontSizePicker
+          fontSizes={[
+            {
+              name: "Small",
+              size: 12,
+              slug: "small",
+            },
+            {
+              name: "Normal",
+              size: 16,
+              slug: "normal",
+            },
+            {
+              name: "Big",
+              size: 26,
+              slug: "big",
+            },
+          ]}
+          onChange={(size) => {
+            setAttributes({ bioStyle: { ...bioStyle, bioSize: size } });
+          }}
+          value={bioSize}
+        />
       </PanelBody>
 
       <PanelBody title={__("Stats Style", "b-blocks")} initialOpen={false}>
@@ -128,6 +162,29 @@ const Style = ({ attributes, setAttributes }) => {
             setAttributes({ statsStyle: { ...statsStyle, valueSize: size } });
           }}
           value={valueSize}
+        />
+      </PanelBody>
+
+
+      <PanelBody title={__("Skills Style", "b-blocks")} initialOpen={false}>
+
+        <h3>{__("Skill Color:", "b-blocks")}</h3>
+        <ColorPalette
+          value={skillsStyle.skillsColor}
+          onChange={(color) => {
+            setAttributes({ skillsStyle: { ...skillsStyle, skillsColor: color } });
+          }
+           
+          }
+        />
+        <h3>{__("BG Color:", "b-blocks")}</h3>
+        <ColorPalette
+          value={skillsStyle.skillsBg}
+          onChange={(color) => {
+            setAttributes({ skillsStyle: { ...skillsStyle, skillsBg: color } });
+          }
+           
+          }
         />
       </PanelBody>
 

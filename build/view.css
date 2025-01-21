@@ -101,7 +101,7 @@
 }
 .wp-block-b-blocks-profile-card .profile-info .stats .stat .stat-label {
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: #2D3033;
 }
 .wp-block-b-blocks-profile-card .profile-info .bio {
   color: #94a3b8;
@@ -117,17 +117,10 @@
 }
 .wp-block-b-blocks-profile-card .profile-info .skills .skill {
   padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 2rem;
   font-size: 0.9rem;
-  color: #94a3b8;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-}
-.wp-block-b-blocks-profile-card .profile-info .skills .skill:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  transform: translateY(-2px);
 }
 .wp-block-b-blocks-profile-card .profile-info .actions {
   display: flex;
