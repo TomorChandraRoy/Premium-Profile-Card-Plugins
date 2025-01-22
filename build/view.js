@@ -204,7 +204,9 @@ const Style = ({
         transform: translateY(-2px);
 	}
 	${statValue}{
-	color:${valueColor};
+	background:${valueColor};
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 	font-size:${valueSize};
 	}
   ${profileCard}{

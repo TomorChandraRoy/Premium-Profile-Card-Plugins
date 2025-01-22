@@ -23,7 +23,7 @@ const Style = ({ attributes, setAttributes }) => {
     gradientBackground,
     skillsStyle,
     buttonToggle,
-    buttonStyle
+    buttonStyle,
   } = attributes;
   // console.log(buttonToggle);
 
@@ -31,7 +31,7 @@ const Style = ({ attributes, setAttributes }) => {
   const { titleColor, titleSize } = titleStyle;
   const { bioSize, bioColor } = bioStyle;
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
-  const { buttonBg,buttonColor } = buttonStyle;
+  const { buttonBg, buttonColor } = buttonStyle;
 
   return (
     <>
@@ -41,11 +41,11 @@ const Style = ({ attributes, setAttributes }) => {
         initialOpen={false}
       >
         <h3>{__("Name Color:", "b-blocks")}</h3>
-        <ColorPalette
-          value={NameColor || ""}
+        <GradientPicker
           onChange={(color) => {
             setAttributes({ nameStyle: { ...nameStyle, NameColor: color } });
           }}
+          value={NameColor || ""}
         />
         <SelectControl
           label={__("Name Tag : ")}
@@ -157,11 +157,11 @@ const Style = ({ attributes, setAttributes }) => {
         <div style={{ marginTop: "20px" }}>
           {__("Value Color:", "b-blocks")}
         </div>
-        <ColorPalette
-          value={valueColor}
+        <GradientPicker
           onChange={(color) => {
             setAttributes({ statsStyle: { ...statsStyle, valueColor: color } });
           }}
+          value={valueColor || ""}
         />
 
         {/* Title Size */}

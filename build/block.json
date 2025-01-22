@@ -80,7 +80,7 @@
     "nameStyle": {
       "type": "object",
       "default": {
-        "NameColor": "#a78bfa",
+        "NameColor": "linear-gradient(90deg, #60a5fa, #a78bfa)",
         "NameTag": "h2"
       }
     },
@@ -103,14 +103,14 @@
       "default": {
         "labelColor": "#94a3b8",
         "labelSize": "13px",
-        "valueColor": "#60a5fa",
+        "valueColor": "linear-gradient(90deg, #60a5fa, #a78bfa)",
         "valueSize": "20px"
       }
     },
     "skillsStyle": {
       "type": "object",
       "default": {
-        "skillsBg": "#15232D",
+        "skillsBg": "rgba(255, 255, 255, 0.05)",
         "skillsColor": "#94a3b8"
       }
     },
