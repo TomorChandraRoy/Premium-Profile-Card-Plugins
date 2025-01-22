@@ -8,7 +8,7 @@ const Style = ({ attributes, id }) => {
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
   const { top, right, bottom, left } = profileRadius;
 
-  const { buttonBg,buttonColor } = buttonStyle;
+  const { buttonBg,buttonColor,buttonSecondary } = buttonStyle;
 
   const mainSl = `#${id}`;
   const profileInfo = `${mainSl} .profile-info`;
@@ -30,8 +30,8 @@ const Style = ({ attributes, id }) => {
   const profileCard = `${container} .profile-card`;
 
 
-  const actions = `${profileInfo} .actions`;
-  const buttonSty = `${actions} .buttonSty`;
+  const actions = `${profileInfo} .actions .primary`;
+  const secondary = `${profileInfo} .actions .secondary`;
 
   return (
     <style
@@ -77,7 +77,10 @@ const Style = ({ attributes, id }) => {
    border-radius:${top} ${right} ${bottom} ${left};
    background:${gradientBackground};
   }
-   ${buttonSty}{
+   ${secondary}{
+   background:${buttonSecondary};
+   }
+   ${actions}{
    background:${buttonBg};
    color:${buttonColor};
    }

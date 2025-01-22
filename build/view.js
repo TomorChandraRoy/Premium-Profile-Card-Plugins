@@ -155,7 +155,8 @@ const Style = ({
   } = profileRadius;
   const {
     buttonBg,
-    buttonColor
+    buttonColor,
+    buttonSecondary
   } = buttonStyle;
   const mainSl = `#${id}`;
   const profileInfo = `${mainSl} .profile-info`;
@@ -170,8 +171,8 @@ const Style = ({
   const statlabel = `${Stats} .stat-label`;
   const container = `${mainSl} .container`;
   const profileCard = `${container} .profile-card`;
-  const actions = `${profileInfo} .actions`;
-  const buttonSty = `${actions} .buttonSty`;
+  const actions = `${profileInfo} .actions .primary`;
+  const secondary = `${profileInfo} .actions .secondary`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -215,7 +216,10 @@ const Style = ({
    border-radius:${top} ${right} ${bottom} ${left};
    background:${gradientBackground};
   }
-   ${buttonSty}{
+   ${secondary}{
+   background:${buttonSecondary};
+   }
+   ${actions}{
    background:${buttonBg};
    color:${buttonColor};
    }

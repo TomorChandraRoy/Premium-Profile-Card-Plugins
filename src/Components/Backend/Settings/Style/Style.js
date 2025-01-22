@@ -31,7 +31,10 @@ const Style = ({ attributes, setAttributes }) => {
   const { titleColor, titleSize } = titleStyle;
   const { bioSize, bioColor } = bioStyle;
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
-  const { buttonBg, buttonColor } = buttonStyle;
+  const { buttonBg, buttonColor,buttonSecondary } = buttonStyle;
+  
+  console.log(buttonSecondary);
+  
 
   return (
     <>
@@ -243,12 +246,19 @@ const Style = ({ attributes, setAttributes }) => {
             });
           }}
         />
-        <h3>{__(" Button BG Color:", "b-blocks")}</h3>
-        <ColorPalette
-          value={buttonBg}
+        <h3>{__(" Button Primary BG:", "b-blocks")}</h3>
+        <GradientPicker
           onChange={(color) => {
             setAttributes({ buttonStyle: { ...buttonStyle, buttonBg: color } });
           }}
+          value={buttonBg || ""}
+        />
+        <h3>{__(" Button Secondary BG :", "b-blocks")}</h3>
+        <GradientPicker
+          onChange={(color) => {
+            setAttributes({ buttonStyle: { ...buttonStyle, buttonSecondary: color } });
+          }}
+          value={buttonSecondary || ""}
         />
       </PanelBody>
     </>
