@@ -14,7 +14,7 @@ const General = ({ attributes, setAttributes }) => {
   const handleAddProfile = () => {
     const newProfile = {
       name: "New User",
-      img: "https://i.ibb.co.com/JjgYLtD/forest-6874717-1920.jpg",
+      img: "https://cdn.pixabay.com/photo/2021/11/09/15/54/mens-fashion-6781827_1280.jpg",
       bio: "Creative designer with 5+ years of experience in digital product design and brand identity.",
       title: "Product Designer",
       stats: [
