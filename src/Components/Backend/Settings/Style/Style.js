@@ -8,7 +8,10 @@ import {
   __experimentalUnitControl as UnitControl,
   GradientPicker,
   ToggleControl,
+  RangeControl,
+  __experimentalSpacer as Spacer,
 } from "@wordpress/components";
+
 import {} from "../../../../../../bpl-tools/Components";
 
 const Style = ({ attributes, setAttributes }) => {
@@ -25,16 +28,16 @@ const Style = ({ attributes, setAttributes }) => {
     buttonToggle,
     buttonStyle,
   } = attributes;
+
   // console.log(buttonToggle);
 
   const { NameColor, NameTag } = nameStyle;
   const { titleColor, titleSize } = titleStyle;
-  const { bioSize, bioColor } = bioStyle;
+  const { bioSize, bioColor, bioLineHight } = bioStyle;
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
-  const { buttonBg, buttonColor,buttonSecondary } = buttonStyle;
-  
-  console.log(buttonSecondary);
-  
+  const { buttonBg, buttonColor, buttonSecondary } = buttonStyle;
+
+  console.log(bioLineHight);
 
   return (
     <>
@@ -43,6 +46,7 @@ const Style = ({ attributes, setAttributes }) => {
         title={__("Profile Styles ", "b-blocks")}
         initialOpen={false}
       >
+        <Spacer marginTop="10" />
         <h3>{__("Name Color:", "b-blocks")}</h3>
         <GradientPicker
           onChange={(color) => {
@@ -65,6 +69,8 @@ const Style = ({ attributes, setAttributes }) => {
             { value: "h6", label: "H6" },
           ]}
         />
+
+        <Spacer marginTop="10" />
 
         <h3>{__("Title Color:", "b-blocks")}</h3>
         <ColorPalette
@@ -98,6 +104,9 @@ const Style = ({ attributes, setAttributes }) => {
           }}
           value={titleSize}
         />
+
+        <Spacer marginTop="10" />
+
         <h3>{__("Bio Color:", "b-blocks")}</h3>
         <ColorPalette
           value={bioColor}
@@ -129,6 +138,23 @@ const Style = ({ attributes, setAttributes }) => {
             setAttributes({ bioStyle: { ...bioStyle, bioSize: size } });
           }}
           value={bioSize}
+        />
+
+        <Spacer marginTop="10" />
+
+        <RangeControl
+          __next40pxDefaultSize
+          __nextHasNoMarginBottom
+          help="Please select LineHight ."
+          initialPosition={bioLineHight}
+          label={__("Bio Line Height", "b-blocks")}
+          max={5}
+          min={0}
+          onChange={(newLineHeight) => {
+            setAttributes({
+              bioStyle: { ...bioStyle, bioLineHight: newLineHeight },
+            });
+          }}
         />
       </PanelBody>
 
@@ -256,7 +282,9 @@ const Style = ({ attributes, setAttributes }) => {
         <h3>{__(" Button Secondary BG :", "b-blocks")}</h3>
         <GradientPicker
           onChange={(color) => {
-            setAttributes({ buttonStyle: { ...buttonStyle, buttonSecondary: color } });
+            setAttributes({
+              buttonStyle: { ...buttonStyle, buttonSecondary: color },
+            });
           }}
           value={buttonSecondary || ""}
         />

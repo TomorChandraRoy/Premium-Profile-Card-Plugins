@@ -95,7 +95,8 @@
       "type": "object",
       "default": {
         "bioColor": "#94a3b8",
-        "bioSize": "15px"
+        "bioSize": "15px",
+        "bioLineHight": 1.6
       }
     },
     "statsStyle": {

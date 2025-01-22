@@ -2,7 +2,7 @@ const Style = ({ attributes, id }) => {
   const { nameStyle, titleStyle, statsStyle, width, height,profileRadius,gradientBackground,bioStyle,skillsStyle,buttonStyle } = attributes;
   const { NameColor } = nameStyle;
   const { titleColor, titleSize } = titleStyle;
-  const { bioSize, bioColor } = bioStyle;
+  const { bioSize, bioColor,bioLineHight } = bioStyle;
   const {skillsBg,skillsColor} = skillsStyle;
 
   const { labelColor, labelSize, valueColor, valueSize } = statsStyle;
@@ -51,6 +51,7 @@ const Style = ({ attributes, id }) => {
 	${bio}{
 	color:${bioColor};
 	font-size:${bioSize};
+  line-height: ${bioLineHight}
 	}
 	${statlabel}{
 	color:${labelColor};

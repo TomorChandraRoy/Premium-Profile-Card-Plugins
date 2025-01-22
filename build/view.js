@@ -135,7 +135,8 @@ const Style = ({
   } = titleStyle;
   const {
     bioSize,
-    bioColor
+    bioColor,
+    bioLineHight
   } = bioStyle;
   const {
     skillsBg,
@@ -190,6 +191,7 @@ const Style = ({
 	${bio}{
 	color:${bioColor};
 	font-size:${bioSize};
+  line-height: ${bioLineHight}
 	}
 	${statlabel}{
 	color:${labelColor};
